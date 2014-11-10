@@ -1,11 +1,18 @@
 library(shiny)
+
+#Load and subset required mtcars dataset
 data(mtcars)
 mcars=mtcars[,-c(5,7,8)]
 
 shinyUI(fluidPage(
+  
+  # Configure the title or header panel
   wellPanel(h1("Know Your Car\'s Fuel Efficiency",align='center')),
   
+  # Configure the input panel on the left side.
   sidebarLayout(
+      
+      # Configure the header in the input panel.
       sidebarPanel(
                helpText(h4("Provide Your Car Information"),
                strong("And"),
@@ -15,6 +22,7 @@ shinyUI(fluidPage(
                
         ),
     
+      # Insert the input boxes.
       selectInput("cyl", strong("Number Of Cylinders"), 
                   choices=c(sort(unique(mcars$cyl))),selected=1),
       sliderInput("disp", strong("Displacement - cu.in."), 
@@ -30,6 +38,7 @@ shinyUI(fluidPage(
       selectInput("carb", strong("Number Of Carburettors"), 
                   choices=c(sort(unique(mcars$carb))),selected=1),
       br(),
+      #Add submit button with proper spacing before and after it.
       submitButton('Predict'),
       br(),
       br(),
@@ -39,21 +48,25 @@ shinyUI(fluidPage(
       ),
       
     mainPanel(
+        # Split Main panel in to separate columns - for prediction and for information.
         column(6,
                br(),
                br(),
                br(),
                br(),
+               # Add car image to have an attractive page.
                img(src='Maserati.jpg'),
                br(),
                br(),
                h3("Your Car\'s Predicted Efficiency Is",align='center'),
                br(),
+               # Add output text for server
                h4(textOutput('mileagempg'),style='color:red',align='center'),
                h4("OR",align='center'),
                h4(textOutput('mileagekmpl'),style='color:green',align='center'),
                br(),
                br(),
+               # Add horizontal rule line and help ful notes for the screen.
                HTML("<hr style=\"border-color:#000000\" />"),
                p(strong("Best Viewed in", span('Google Chrome',style='color:blue'),
                  'with maximized Screen.', span('IE',style='color:blue'),
@@ -62,6 +75,7 @@ shinyUI(fluidPage(
                offset=1
         ),
   
+        # The information column
         column(4,
                h3("Efficiency Predictor",style='color:blue'),
                
