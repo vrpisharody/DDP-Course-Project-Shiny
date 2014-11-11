@@ -1,3 +1,7 @@
+### This application predicts an automobile's fuel efficiency based
+### on user inputs. It uses the mtcars dataset to run a regression model
+### to predict an automobile's efficiency.
+
 library(shiny)
 
 #Load and subset required mtcars dataset
@@ -50,7 +54,7 @@ shinyUI(fluidPage(
     mainPanel(
         # Split Main panel in to separate columns - for prediction and for information.
         column(6,
-               br(),
+               p(em(strong('Read information in right side panel to run application')),style='color:red'),
                br(),
                br(),
                br(),
@@ -78,7 +82,7 @@ shinyUI(fluidPage(
         # The information column
         column(4,
                h3("Efficiency Predictor",style='color:blue'),
-               
+                              
                p('This application uses the',span(strong("mtcars"),style='color:red'),
                  'dataset to predict an automobile\'s efficiency.',style='text-align:justify'),
                p('The panel on the left accepts inputs from the user and uses a 
