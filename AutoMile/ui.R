@@ -89,17 +89,17 @@ shinyUI(navbarPage("",
                           p('This application uses the',span(strong("mtcars"),style='color:red'),
                             'dataset to predict an automobile\'s efficiency.',style='text-align:justify'),
                           p('The panel on the left accepts inputs from the user and uses a 
-            regression model to predict an automobile\'s fuel efficiency in
-            miles per gallon (mpg) and kilometers per litre (kmpl).',style='text-align:justify'),
+                             regression model to predict an automobile\'s fuel efficiency in
+                             miles per gallon (mpg) and kilometers per litre (kmpl).',style='text-align:justify'),
                           p('Specification on',span(strong('number of cylinders, displacement, horsepower'),
                                                     style='color:red'),"etc are to be entered by the user in the left 
-            input panel.",code("sliderInput"),"and",code("selectInput"),"widgets 
-            are used. Once the user has entered all required information, the user
-            presses the", span(strong("\"Predict\""),style='color:blue'),'button at the
-            bottom of the panel. The application then calculates and predicts 
-            the automobile\'s fuel efficiency in the center panel.',style='text-align:justify'),
+                            input panel.",code("sliderInput"),"and",code("selectInput"),"widgets 
+                            are used. Once the user has entered all required information, the user
+                            presses the", span(strong("\"Predict\""),style='color:blue'),'button at the
+                            bottom of the panel. The application then calculates and predicts 
+                            the automobile\'s fuel efficiency in the center panel.',style='text-align:justify'),
                           p(strong(em('Use the')),span(strong(em("About")),style='color:blue'),strong(em("tab to know
-            more on the application"))),
+                             more on the application"))),
                           br(),
                           img(src='carcollage.jpg'),
                           offset=1   
@@ -108,6 +108,11 @@ shinyUI(navbarPage("",
            )
         )
     ),
-    tabPanel("About",
-             includeMarkdown("about.md"))
+  tabPanel("About",
+             column(1,""),
+             column(7,
+             includeMarkdown("about.md"))),
+  tabPanel("UI", pre(includeText("ui.R"))),
+  tabPanel("Server", pre(includeText("server.R")))
+  
 ))
