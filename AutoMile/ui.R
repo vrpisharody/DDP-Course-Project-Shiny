@@ -28,7 +28,8 @@ shinyUI(navbarPage("",
                             align='center'
                             
                    ),
-                   
+                   tags$style(type="text/css", ".jslider .jslider-label{font-size: 12px;}"),
+                   tags$style(type="text/css", ".jslider .jslider-value{font-size: 12px;}"),
                    # Insert the input boxes.
                    selectInput("cyl", strong("Number Of Cylinders"), 
                                choices=c(sort(unique(mcars$cyl))),selected=1),
